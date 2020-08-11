@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <p>@ViewBag.role</p>
+<div class="row">
+    @foreach (var b in ViewBag.Books)
+    {
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <div>
+                    <img src="@b.pathImg" width="250" class="card-img-top" alt="...">
+                </div>         
+                <div class="card-body">
+
+                    <h3 class="card-title">@b.Title</h3>
+                    <h4 class="card-text">@b.Author.FullName</h4>
+                    <p class="card-text">@b.Subject.Title</p>
+                    <a href="/Catalog/TakeBook/@b.Id" class="btn btn-primary">Взять на свой абонемент</a>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+

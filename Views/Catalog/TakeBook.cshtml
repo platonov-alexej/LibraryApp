@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "TakeBook";
+    
+    var book = ViewBag.book;
+}
+
+
+<h2>Хотите взять данную книгу на абонемент?</h2>
+
+<form action="/Catalog/TakeBook" method="post">
+    <div class="card" style="width: 18rem;">
+        <div>
+            <img src="@book.pathImg" width="250" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+
+            <h3 class="card-title">@book.Title</h3>
+            <h4 class="card-text">@ViewBag.author</h4>
+            <p class="card-text">@ViewBag.subject</p>
+            <input type="hidden" value="@book.Id" name="Id" />
+            <input type="hidden" value="@book.Title" name="Title" />
+
+            <button name="book" value="book" type="submit">Добавить</button>
+
+
+        </div>
+    </div>
+</form>
