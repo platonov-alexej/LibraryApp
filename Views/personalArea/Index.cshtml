@@ -1,0 +1,34 @@
+﻿@{
+    
+    ViewBag.Title = "Личный кабинет";
+}
+    <h2>@ViewBag.Title. Ваш статус - @ViewBag.Role</h2>
+
+<h3>Книги, которые у вас на руках:</h3>
+<div class="row">
+    @foreach (LibraryApp.Controllers.BookForView b in ViewBag.Items)
+    {
+        <div class="col-sm-6">
+            <div class="card" style="height: 45rem;">
+                <div>
+                    
+                    <img style='width:160px;' src="data:image/jpeg;base64,@b.Picture" />
+                </div>
+                <div class="card-body">
+
+                    <h3 class="card-title">@b.Book.Title</h3>
+                    <h4 class="card-text">@b.Book.Author.FullName</h4>
+                    <p class="card-text">@b.Book.Subject.Title</p>
+                    <a href="/Catalog/ReturnBook/@b.Book.Id" class="btn btn-primary">Вернуть книгу</a>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+
+<hr>
+
+

@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "TakeBook";
     
-    var book = ViewBag.book;
+    var item = ViewBag.Item;
 }
 
 
@@ -11,17 +11,17 @@
 <form action="/Catalog/TakeBook" method="post">
     <div class="card" style="width: 18rem;">
         <div>
-            <img src="@book.pathImg" width="250" class="card-img-top" alt="...">
+            <img style='width:160px;' src="data:image/jpeg;base64,@item.Picture" />
         </div>
         <div class="card-body">
 
-            <h3 class="card-title">@book.Title</h3>
-            <h4 class="card-text">@ViewBag.author</h4>
-            <p class="card-text">@ViewBag.subject</p>
-            <input type="hidden" value="@book.Id" name="Id" />
-            <input type="hidden" value="@book.Title" name="Title" />
+            <h3 class="card-title">@item.Book.Title</h3>
+            <h4 class="card-text">@item.Book.Author.FullName</h4>
+            <p class="card-text">@item.Book.Subject.Title</p>
+            <input type="hidden" value="@item.Book.Id" name="Id" />
+            <input type="hidden" value="@item.Book.Title" name="Title" />
 
-            <button name="book" value="book" type="submit">Добавить</button>
+            <button name="book" value="book" type="submit">Беру</button>
 
 
         </div>

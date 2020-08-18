@@ -20,6 +20,7 @@ namespace LibraryApp.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+
         public AccountController()
         {
         }
@@ -138,28 +139,33 @@ namespace LibraryApp.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Библиотекарь")]
+        //[AllowAnonymous]
         public ActionResult Register()
         {
-            //SelectList roles = new SelectList(db.AspNetRoles, "Id", "Name");
-            //ViewBag.Roles = roles;
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            SelectList roles = new SelectList(roleManager.Roles,"id", "Name");
+            ViewBag.Roles = roles;
             return View();
         }
 
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Библиотекарь")]
         [ValidateAntiForgeryToken]
-       
+        //[AllowAnonymous]
+
         public async Task<ActionResult> Register(RegisterViewModel model, string role)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-                //UserManager.AddToRole(user.Id, roleManager.FindById(role).Name);
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+                string userRole = roleManager.FindById(role).Name;
+               
+                UserManager.AddToRole(user.Id, userRole);
 
                 if (result.Succeeded)
                 {

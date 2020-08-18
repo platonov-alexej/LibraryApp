@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "ViewBooksAtUsers";
+}
+
+<h2>Список книг, которые находятся на руках у пользователей</h2>
+<hr>
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>№</th>
+            <th>Книга</th>
+            <th>Пользователь</th>
+            <th>Дата выдачи</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 1; }
+        @foreach (var bg in ViewBag.BookGivings)
+        {
+            <tr>
+                <th scope="row">@i</th>
+                <td>@bg.Book</td>
+                <td>
+                    @bg.User
+                </td>
+                <td>
+                    @bg.Date
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+

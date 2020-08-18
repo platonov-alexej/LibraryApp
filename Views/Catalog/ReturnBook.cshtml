@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Вернуть книгу";
+
+    var item = ViewBag.Item;
+}
+
+
+<h2>Хотите вернуть данную книгу?</h2>
+
+<form action="/Catalog/ReturnBook" method="post">
+    <div class="card" style="width: 18rem;">
+        <div>
+            <img style='width:160px;' src="data:image/jpeg;base64,@item.Picture" />
+        </div>
+        <div class="card-body">
+
+            <h3 class="card-title">@item.Book.Title</h3>
+            <h4 class="card-text">@item.Book.Author.FullName</h4>
+            <p class="card-text">@item.Book.Subject.Title</p>
+            <input type="hidden" value="@item.Book.Id" name="Id" />
+            <input type="hidden" value="@item.Book.Title" name="Title" />
+
+            <button name="book" value="book" type="submit">Вернуть</button>
+
+
+        </div>
+    </div>
+</form>
+

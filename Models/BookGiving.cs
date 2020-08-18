@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace LibraryApp.Models
 {
     public class BookGiving
     {
-        public string Id { get; set; }
+        [Key]
+        public int BooksGivingId { get; set; }
 
         [ForeignKey("Book")]
         public int? BookId { get; set; }

@@ -1,0 +1,26 @@
+﻿
+@model LibraryApp.Models.PagesViewModel
+@using LibraryApp.Helpers
+
+
+<div class="card" style="width: 18rem;">
+    <div>
+        <img style='width:160px;' src="data:image/jpeg;base64,@Model.Picture" />
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">@Model.Book.Title</h3>
+        <h4 class="card-text">@Model.Book.Author.FullName</h4>
+        <p class="card-text">@Model.Book.Subject.Title</p>
+    </div>
+</div>
+
+<div>
+    <p>@Model.Text</p>
+
+    <div class="btn-group">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("ViewBook", "Catalog", new { id = Model.Book.Id, page = x}))
+    </div>
+
+</div>
+
+

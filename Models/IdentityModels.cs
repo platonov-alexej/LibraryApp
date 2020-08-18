@@ -30,6 +30,8 @@ namespace LibraryApp.Models
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<BookGiving> BookGivings { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Page> Pages { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
